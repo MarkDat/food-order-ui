@@ -1,5 +1,6 @@
 import { HomePage, TasksPage, ProfilePage, OrdersPage, MenuPage } from './pages';
 import { withNavigationWatcher } from './contexts/navigation';
+import { lazy } from 'react';
 
 const routes = [
     {
@@ -20,7 +21,7 @@ const routes = [
     },
     {
         path: '/dashboard',
-        element: HomePage
+        element: lazy(() => import('./pages/home/home'))
     }
 ];
 
