@@ -4,7 +4,7 @@ import { useScreenSize } from './media-query';
 export function useMenuPatch() {
   const { isSmall, isMedium } = useScreenSize();
   const [enabled, setEnabled] = useState(isSmall || isMedium);
-  const onMenuReady = useCallback(() => {
+  const onMenuReady = useCallback((e) => {
     if (!enabled) {
       return;
     }

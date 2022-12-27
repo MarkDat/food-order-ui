@@ -1,5 +1,7 @@
 @import "../../dx-styles.scss";
 @import "../../themes/generated/variables.additional.scss";
+@import "../../themes/customs//variables.additional.scss";
+
 
 .side-navigation-menu {
   display: flex;
@@ -20,11 +22,15 @@
 
       // ## Icon width customization
       .dx-treeview-item {
+        // padding-left: 0;
+        // padding-right: 0;
+        padding: 10px 12px;
+        margin: 5px 12px;
         padding-left: 0;
-        padding-right: 0;
+        border-radius: 8px;
 
         .dx-icon {
-          width: $side-panel-min-width !important;
+          width: 48px !important;
           margin: 0 !important;
         }
       }
@@ -50,7 +56,7 @@
       .dx-treeview-node {
         &[aria-level='1'] {
           font-weight: bold;
-          border-bottom: 1px solid $base-border-color;
+          // border-bottom: 1px solid $base-border-color;
         }
   
         &[aria-level='2'] .dx-treeview-item-content {
@@ -66,7 +72,7 @@
       .dx-treeview-node-container {
         .dx-treeview-node {
           &.dx-state-selected:not(.dx-state-focused)> .dx-treeview-item {
-            background: transparent;
+            background: $item-nav-color;
           }
 
           &.dx-state-selected > .dx-treeview-item * {
@@ -74,7 +80,7 @@
           }
 
           &:not(.dx-state-focused)>.dx-treeview-item.dx-state-hover {
-            background-color: lighten($base-bg, 4.00);
+            background-color: $item-nav-color;
           }
         }
       }
