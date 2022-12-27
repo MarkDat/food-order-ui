@@ -17,14 +17,13 @@ export default function Content() {
         ))}
         <Route
           path='*'
-          element={<Navigate to='/home' />}
+          element={<Navigate to='/dashboard' />}
         />
       </Routes>
       <Footer>
-        Copyright © 2011-{new Date().getFullYear()} {appInfo.title} Inc.
+        Copyright © 2022-{new Date().getFullYear()} {appInfo.title} Inc.
         <br />
-        All trademarks or registered trademarks are property of their
-        respective owners.
+        Order thức ăn
       </Footer>
     </SideNavBarLayout>
   );
