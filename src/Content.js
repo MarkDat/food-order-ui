@@ -17,7 +17,7 @@ export default function Content() {
         ))}
         <Route
           path='*'
-          element={<Navigate to='/dashboard' />}
+          element={<Navigate to='/order/menu' />}
         />
       </Routes>
       <Footer>

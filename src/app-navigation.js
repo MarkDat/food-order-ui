@@ -5,12 +5,12 @@ export const navigation = [
     icon: 'home'
   },
   {
-    text: 'Examples',
+    text: 'Ví dụ',
     icon: 'folder',
     items: [
       {
         text: 'Profile',
-        path: '/profile'
+        path: '/profile',
       },
       {
         text: 'Tasks',
@@ -19,8 +19,14 @@ export const navigation = [
     ]
   }, 
   {
-    text: 'Orders',
-    path: '/orders',
-    icon: 'save'
+    text: 'Đặt đơn',
+    icon: 'save',
+    items: [
+      {
+        text: 'Menu',
+        path: '/orders/menu'
+      }
+    ]
   }
-  ];
+, 
+];

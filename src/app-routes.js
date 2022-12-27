@@ -1,4 +1,4 @@
-import { HomePage, TasksPage, ProfilePage, OrdersPage } from './pages';
+import { HomePage, TasksPage, ProfilePage, OrdersPage, MenuPage } from './pages';
 import { withNavigationWatcher } from './contexts/navigation';
 
 const routes = [
@@ -11,13 +11,17 @@ const routes = [
         element: ProfilePage
     },
     {
+        path: '/orders',
+        element: OrdersPage
+    },
+    {
+        path: '/orders/menu',
+        element: MenuPage
+    },
+    {
         path: '/dashboard',
         element: HomePage
-    }, 
-  {
-    path: '/orders',
-    element: OrdersPage
-  }
+    }
 ];
 
 export default routes.map(route => {
