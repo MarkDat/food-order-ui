@@ -1,0 +1,17 @@
+
+@import '../../../themes/customs/variables.additional.scss';
+
+.action-cell {
+    display: flex;
+    justify-content: space-around;
+
+    &--edit {
+        color: $edit-icon-color;
+        cursor: pointer;
+    }
+    
+    &--delete {
+        color: red;
+        cursor: pointer;
+    }
+}

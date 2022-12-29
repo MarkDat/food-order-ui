@@ -1,0 +1,15 @@
+@import "../../themes/generated/variables.base.scss";
+
+.i-color {
+    &--red {
+        color: red !important;
+    }
+
+    &--white {
+        color: #f2f2f2 !important;
+    }
+
+    &--base {
+        color: $base-text-color !important;
+    }
+}
