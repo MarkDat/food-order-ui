@@ -45,7 +45,7 @@ export default function OrderList() {
 					width={300}
 					caption={"Tên nhà hàng"}
 				/>
-				<Column dataField={"Task_Status"} caption={"Trạng thái"} />
+				<Column dataField={"Task_Status"} caption={"Trạng thái đơn"} />
 				<Column
 					dataField={"Task_Status"}
 					caption={"Người tạo đơn"}

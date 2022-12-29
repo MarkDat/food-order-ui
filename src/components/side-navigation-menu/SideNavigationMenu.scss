@@ -95,6 +95,12 @@
   }
 }
 
+.child-selected {
+  background-color: $item-nav-color;
+  color: $base-accent;
+  font-weight: 600;
+}
+
 .dx-drawer-overlap.pre-init-blink-fix {
   @import "../../utils/patches.scss";
   @include menu-pre-init-patch;
