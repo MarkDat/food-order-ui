@@ -12,7 +12,7 @@ const routes = [
 		children: [
 			{
 				index: true,
-				element: lazyLoadRoutes(('./pages/orders/menu/menu'))
+				element: lazyLoadRoutes(('./pages/orders/list/list'))
 			}
 		]
 	},

@@ -2,4 +2,4 @@ export { default as HomePage } from './home/home';
 export { default as ProfilePage } from './profile/profile';
 export { default as TasksPage } from './tasks/tasks';
 export { default as OrdersPage } from './orders/orders';
-export { default as MenuPage } from './orders/menu/menu';
+export { default as OrderListPage } from './orders/list/list';
