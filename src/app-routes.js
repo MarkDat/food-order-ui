@@ -1,33 +1,37 @@
-import { HomePage, TasksPage, ProfilePage, OrdersPage, MenuPage } from './pages';
-import { withNavigationWatcher } from './contexts/navigation';
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
+import { Navigate } from 'react-router-dom';
 
 const routes = [
-    {
-        path: '/tasks',
-        element: TasksPage
-    },
-    {
-        path: '/profile',
-        element: ProfilePage
-    },
-    {
-        path: '/orders',
-        element: OrdersPage
-    },
-    {
-        path: '/orders/menu',
-        element: MenuPage
-    },
-    {
+	{
         path: '/dashboard',
-        element: lazy(() => import('./pages/home/home'))
-    }
+        element: lazyLoadRoutes('./pages/home/home')
+    },
+	{
+		path: '/orders',
+		element: lazyLoadRoutes('./pages/orders/orders'),
+		children: [
+			{
+				index: true,
+				element: lazyLoadRoutes(('./pages/orders/menu/menu'))
+			}
+		]
+	},
+	{
+		path:'*',
+		element: <Navigate to='/orders' />
+	}
 ];
 
-export default routes.map(route => {
-    return {
-        ...route,
-        element: withNavigationWatcher(route.element, route.path)
-    };
-});
+
+// lazy loading
+export function lazyLoadRoutes(path) {
+	let LazyElement = lazy(() => import(`${path}`));
+
+	return (
+		<Suspense fallback="Loading...">
+			<LazyElement />
+		</Suspense>
+	);
+}
+
+export default routes;
