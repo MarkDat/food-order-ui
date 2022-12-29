@@ -1,3 +1,4 @@
+import { PaymentPage, SettingPage } from './pages';
 import { lazy, Suspense } from 'react';
 import { Navigate } from 'react-router-dom';
 
@@ -12,9 +13,17 @@ const routes = [
 		children: [
 			{
 				index: true,
-				element: lazyLoadRoutes(('./pages/orders/list/list'))
+				element: lazyLoadRoutes('./pages/orders/list/list')
 			}
 		]
+	},
+	{
+		path: '/payment',
+		element: lazyLoadRoutes('./pages/payment/payment')
+	},
+	{
+		path: '/setting',
+		element: lazyLoadRoutes('./pages/setting/setting')
 	},
 	{
 		path:'*',
