@@ -26,7 +26,7 @@ export default function OrderList() {
 		<>
 			<DataGrid
 				className={"dx-card wide-card"}
-				dataSource={dataSource}
+				dataSource={[]}
 				showBorders={false}
 				focusedRowEnabled={false}
 				defaultFocusedRowIndex={0}
