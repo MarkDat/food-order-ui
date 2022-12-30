@@ -1,3 +1,7 @@
-export default function FoodMenu() {
+import { memo } from "react";
+
+function FoodMenu() {
     return <>FoodMenu</>
 }
+
+export default memo(FoodMenu);
