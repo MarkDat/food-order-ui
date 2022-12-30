@@ -5,6 +5,7 @@ import './themes/customs/devextreme.override.scss';
 import React from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 import './dx-styles.scss';
+import './assets/styles/foc-style.scss';
 import LoadPanel from 'devextreme-react/load-panel';
 import { NavigationProvider } from './contexts/navigation';
 import { AuthProvider, useAuth } from './contexts/auth';

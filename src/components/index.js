@@ -8,6 +8,7 @@ export { default as SideNavigationMenu } from './side-navigation-menu/SideNaviga
 
 export { default as FoodGroup } from './order/food/food-group/FoodGroup';
 export { default as FoodMenu } from './order/food/food-menu/FoodMenu';
+export { default as FoodInfo } from './order/food/food-menu/food-info/FoodInfo';
 export { default as FoodOrder } from './order/food/food-order/FoodOrder';
 export { default as OrderForm } from './order/order-form/OrderForm';
 
