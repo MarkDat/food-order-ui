@@ -85,6 +85,7 @@
 
           &:not(.dx-state-focused)>.dx-treeview-item.dx-state-hover {
             background-color: $item-nav-color;
+            color: $base-accent;
           }
         }
       }

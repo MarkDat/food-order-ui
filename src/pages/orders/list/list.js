@@ -8,10 +8,14 @@ import DataGrid, {
 
 import { ActionCellTemplate } from "@components/shared";
 import "./list.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function OrderList() {
+	const navigate = useNavigate();
+
 	const onEditClicked = (e, data) => {
 		console.log(data);
+		navigate('/orders/1');
 	};
 
 	const onDeleteClicked = (e, data) => {

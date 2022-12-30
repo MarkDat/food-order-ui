@@ -1,4 +1,3 @@
-import { PaymentPage, SettingPage } from './pages';
 import { lazy, Suspense } from 'react';
 import { Navigate } from 'react-router-dom';
 
@@ -14,6 +13,10 @@ const routes = [
 			{
 				index: true,
 				element: lazyLoadRoutes('./pages/orders/list/list')
+			},
+			{
+				path: ':orderId',
+				element: lazyLoadRoutes('./pages/orders/details/order-details')
 			}
 		]
 	},
