@@ -26,7 +26,7 @@ function FoodInfo(food) {
             </div>
             <div className="col-md-4 d-flex justify-content-end">
                 <div className='food-info__money me-2'>
-                    <div className='price'>23.000 <span className='price__unit'>đ</span></div>
+                    <div className='price'>{(+food.price.value).toMoneyString()}<span className='price__unit'>đ</span></div>
                     <div className='cost'>23.000 <span className='cost__unit'>đ</span></div>
                 </div>
                 <div className='food-info__add-button'>
