@@ -13,7 +13,7 @@ function FoodGroup({menuGroups, onClickedFoodGroup}) {
             selectionMode={'single'}
             keyExpr={'dish_type_id'}
             displayExpr={'dish_type_name'}
-            defaultSelectedItemKeys={[-1]}
+            defaultSelectedItemKeys={[-99]}
             onItemClick={onClickedFoodGroup}>
         </List>
     </>

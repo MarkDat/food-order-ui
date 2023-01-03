@@ -2,10 +2,12 @@ import 'devextreme/dist/css/dx.common.css';
 import './themes/generated/theme.base.css';
 import './themes/generated/theme.additional.css';
 import './themes/customs/devextreme.override.scss';
-import React from 'react';
-import { HashRouter as Router } from 'react-router-dom';
 import './dx-styles.scss';
 import './assets/styles/foc-style.scss';
+
+import React from 'react';
+import { HashRouter as Router } from 'react-router-dom';
+
 import LoadPanel from 'devextreme-react/load-panel';
 import { NavigationProvider } from './contexts/navigation';
 import { AuthProvider, useAuth } from './contexts/auth';
