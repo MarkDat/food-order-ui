@@ -3,7 +3,12 @@ import { truncate } from '@utils/common-functions';
 import { Button } from 'devextreme-react';
 import './FoodInfo.scss';
 
-function FoodInfo(food) {
+import {useOrderFood} from '@contexts/order-food';
+import { memo } from 'react';
+
+function FoodInfo({food}) {
+
+    const {orderFoods, setOrderFoods} = useOrderFood();
 
     const OverButton = () => {
         return <div className='btn-over'>Hết hàng</div>;
@@ -11,7 +16,7 @@ function FoodInfo(food) {
 
     const AddButton = () => {
         return <>
-            <Button className='btn-add' icon='fa-sharp fa-solid fa-plus i-color--white' />
+            <Button className='btn-add' icon='fa-sharp fa-solid fa-plus i-color--white' onClick={onClickedAddFood}/>
         </>;
     }
 
@@ -27,6 +32,10 @@ function FoodInfo(food) {
         return <>
             <div className='price mt-1'>{(+food.price.value).toMoneyString()}<span className='price__unit'>đ</span></div>
         </>
+    }
+
+    const onClickedAddFood = () => {
+        setOrderFoods(prev => [...prev, food]);
     }
 
     return <>
@@ -50,4 +59,4 @@ function FoodInfo(food) {
     </>
 }
 
-export default FoodInfo;
+export default memo(FoodInfo);

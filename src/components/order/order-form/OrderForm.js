@@ -1,9 +1,11 @@
 import { memo, useEffect, useState } from "react"
 import { FoodGroup, FoodMenu, FoodOrder } from "@components";
+import { OrderFoodContext } from "@contexts/order-food";
 
 function OrderForm() {
 	const [menu] = useState(menuFake);
 	const [menuGroups, setMenuGroups] = useState([]);
+    const [orderFoods, setOrderFoods] = useState([]);
 	const [selectedGroupNo, setSelectedGroupNo] = useState(-1);
 	
 	const [foods, setFoods] = useState([]); 
@@ -45,16 +47,19 @@ function OrderForm() {
 		setSelectedGroupNo(groupNo);
 	}
 
+    console.log(orderFoods);
 
 	return <>
-		<div className="row">
-			<div className="col-md-3">
-				<h3 className="text-center">Nhóm</h3>
-				<FoodGroup menuGroups={menuGroups} onClickedFoodGroup={onClickedFoodGroup}></FoodGroup>
-			</div>
-			<div className="col-md-6"><FoodMenu foods={foods}></FoodMenu></div>
-			<div className="col-md-3"><FoodOrder></FoodOrder></div>
-		</div>
+        <OrderFoodContext.Provider value={{orderFoods, setOrderFoods}}>
+            <div className="row">
+                <div className="col-md-3">
+                    <h3 className="text-center">Nhóm</h3>
+                    <FoodGroup menuGroups={menuGroups} onClickedFoodGroup={onClickedFoodGroup}></FoodGroup>
+                </div>
+                <div className="col-md-6"><FoodMenu foods={foods}></FoodMenu></div>
+                <div className="col-md-3"><FoodOrder orderFoods={orderFoods}></FoodOrder></div>
+            </div>
+        </OrderFoodContext.Provider>
 	</>
 }
 

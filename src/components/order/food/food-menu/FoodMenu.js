@@ -5,9 +5,6 @@ import FoodInfo from "./food-info/FoodInfo";
 import './FoodMenu.scss';
 
 function FoodMenu({foods}) {
-
-    console.log(foods);
-
     return <>
         <List
             className="food-menu-list"
@@ -16,7 +13,7 @@ function FoodMenu({foods}) {
             focusStateEnabled={false}
             searchEnabled={true}
             searchExpr={"name"}
-            itemRender={FoodInfo}>
+            itemRender={(food) => <FoodInfo food={food} />}>
         </List>
     </>
 }
