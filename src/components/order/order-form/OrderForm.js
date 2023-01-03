@@ -57,7 +57,7 @@ function OrderForm() {
                     <FoodGroup menuGroups={menuGroups} onClickedFoodGroup={onClickedFoodGroup}></FoodGroup>
                 </div>
                 <div className="col-md-6"><FoodMenu foods={foods}></FoodMenu></div>
-                <div className="col-md-3"><FoodOrder orderFoods={orderFoods}></FoodOrder></div>
+                <div className="col-md-3"><FoodOrder /></div>
             </div>
         </OrderFoodContext.Provider>
 	</>

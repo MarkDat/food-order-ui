@@ -3,8 +3,11 @@ import { memo } from "react";
 import {FoodOrderInfo} from "@components";
 
 import './FoodOrder.scss';
+import { useOrderFood } from "@contexts/order-food";
 
-function FoodOrder({orderFoods}) {
+function FoodOrder() {
+
+    const {orderFoods} = useOrderFood();
 
     const FoodOrderHeader = () => {
         return <>
@@ -17,17 +20,29 @@ function FoodOrder({orderFoods}) {
         </>
     }
 
+    const FoodOrderFooter = () => {
+        return <>
+            <div className="food-order-footer d-flex justify-content-between">
+                <h4>Tổng:</h4>
+                <span>150.000</span>
+            </div>
+        </>
+    }
+
+
 
     return <>
         <div className="food-order">
             <FoodOrderHeader />
             <List
                 className="food-order-list"
-                dataSource={[]}
-                height={500}
+                dataSource={orderFoods}
+                noDataText={'Hãy chọn món đi!!!'}
+                height={300}
                 focusStateEnabled={false}
                 itemRender={FoodOrderInfo}>
             </List>
+            <FoodOrderFooter />
         </div>
     </>
 }

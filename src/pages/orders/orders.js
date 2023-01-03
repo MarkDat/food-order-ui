@@ -5,9 +5,8 @@ import './orders.scss';
 export default function Order() {
   return (
     <>
-      <h2 className={'content-block'}>Orders</h2>
       <div className={'content-block'}>
-        <div className={'dx-card responsive-paddings'}>
+        <div className={'dx-card responsive-paddings order-page'}>
            <Outlet />
         </div>
       </div>

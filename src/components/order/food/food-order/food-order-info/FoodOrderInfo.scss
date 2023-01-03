@@ -1,0 +1,29 @@
+@import '../../../../../assets/styles/mixin/foc-mixins.scss';
+@import '../../../../../themes/generated/variables.base.scss';
+
+.food-order-info{
+
+    &__img {
+        width: 20px;
+        height: 20px;
+    }
+
+    &__title {
+        font-size: 12px;
+        font-weight: 700;
+        white-space: break-spaces;
+    }
+
+    &__btn {
+        border-radius: 2% !important;
+
+        &--add {
+            background-color: $base-accent;
+            color: white;
+        }
+
+        &--minus {
+            background-color: $base-accent;
+        }
+    }
+}
