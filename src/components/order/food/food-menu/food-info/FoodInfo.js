@@ -35,7 +35,24 @@ function FoodInfo({food}) {
     }
 
     const onClickedAddFood = () => {
-        setOrderFoods(prev => [...prev, food]);
+        const foodExisted = findFoodInCart();
+
+        if(!foodExisted) {
+            food.quantity = 1;
+            setOrderFoods(prev => [...prev, food]);
+
+            return;
+        }
+
+        setOrderFoods(prev => {
+            ++foodExisted.quantity;
+            
+            return [...prev];
+        });
+    }
+
+    const findFoodInCart = () => {
+        return orderFoods.find((e) => e.id === food.id);
     }
 
     return <>

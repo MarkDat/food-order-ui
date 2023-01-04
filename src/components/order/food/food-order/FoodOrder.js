@@ -1,13 +1,24 @@
 import { Button, List } from "devextreme-react";
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import {FoodOrderInfo} from "@components";
 
 import './FoodOrder.scss';
 import { useOrderFood } from "@contexts/order-food";
 
 function FoodOrder() {
-
+    const [total, setTotal] = useState(0);
     const {orderFoods} = useOrderFood();
+
+
+    useEffect(() => {
+        const totalTemp = orderFoods.reduce((a,b) => {
+            const price = !b.discount_price ? b.price.value ?? 0 : b.discount_price.value;
+
+            return a + price;
+        }, 0);
+
+         setTotal(totalTemp);
+    }, [orderFoods]);
 
     const FoodOrderHeader = () => {
         return <>
@@ -24,7 +35,7 @@ function FoodOrder() {
         return <>
             <div className="food-order-footer d-flex justify-content-between">
                 <h4>Tổng:</h4>
-                <span>150.000</span>
+                <span>{total}</span>
             </div>
         </>
     }
@@ -40,7 +51,7 @@ function FoodOrder() {
                 noDataText={'Hãy chọn món đi!!!'}
                 height={300}
                 focusStateEnabled={false}
-                itemRender={FoodOrderInfo}>
+                itemRender={(food) => <FoodOrderInfo food={food} />}>
             </List>
             <FoodOrderFooter />
         </div>

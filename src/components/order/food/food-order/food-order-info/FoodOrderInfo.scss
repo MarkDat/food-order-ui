@@ -15,7 +15,7 @@
     }
 
     &__btn {
-        border-radius: 2% !important;
+        border-radius: 20% !important;
 
         &--add {
             background-color: $base-accent;
@@ -25,5 +25,11 @@
         &--minus {
             background-color: $base-accent;
         }
+        
+        @include default-button;
+    }
+
+    .quantity {
+        font-weight: 500;
     }
 }
