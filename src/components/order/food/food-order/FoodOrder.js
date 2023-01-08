@@ -11,7 +11,7 @@ function FoodOrder() {
 
 
     useEffect(() => {
-        const totalTemp = orderFoods.reduce((a,b) => {console.log(b);
+        const totalTemp = orderFoods.reduce((a,b) => {
             const price = !b.discount_price ? (b.price.value * b.quantity) ?? 0 : (b.discount_price.value * b.quantity) ?? 0;
 
             return a + price;
