@@ -47,8 +47,6 @@ function OrderForm() {
 		setSelectedGroupNo(groupNo);
 	}
 
-    console.log(orderFoods);
-
 	return <>
         <OrderFoodContext.Provider value={{orderFoods, setOrderFoods}}>
             <div className="row">

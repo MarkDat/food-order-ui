@@ -7,12 +7,12 @@ import { useOrderFood } from "@contexts/order-food";
 
 function FoodOrder() {
     const [total, setTotal] = useState(0);
-    const {orderFoods} = useOrderFood();
+    const {orderFoods, setOrderFoods} = useOrderFood();
 
 
     useEffect(() => {
-        const totalTemp = orderFoods.reduce((a,b) => {
-            const price = !b.discount_price ? b.price.value ?? 0 : b.discount_price.value;
+        const totalTemp = orderFoods.reduce((a,b) => {console.log(b);
+            const price = !b.discount_price ? (b.price.value * b.quantity) ?? 0 : (b.discount_price.value * b.quantity) ?? 0;
 
             return a + price;
         }, 0);
@@ -20,12 +20,21 @@ function FoodOrder() {
          setTotal(totalTemp);
     }, [orderFoods]);
 
+    const onClickOrderClear = () => {
+        setOrderFoods([]);
+    }
+
     const FoodOrderHeader = () => {
         return <>
             <div className="food-order__header d-flex justify-content-between">
                 <h3 className="mt-1">Giỏ hàng</h3>
-                <div className="order-button">
-                    <Button className="order-button__action br-color--accent" icon="fa-solid fa-cart-plus i-color--white" />
+                <div className="d-flex">
+                    <div className="action-btn">
+                        <Button className="action-btn__clear" icon="fa-regular fa-trash-undo i-color--accent" onClick={onClickOrderClear}/>
+                    </div>
+                    <div className="action-btn ms-1">
+                        <Button className="action-btn__order br-color--accent" icon="fa-solid fa-cart-plus i-color--white" />
+                    </div>
                 </div>
             </div>
         </>
@@ -39,8 +48,6 @@ function FoodOrder() {
             </div>
         </>
     }
-
-
 
     return <>
         <div className="food-order">

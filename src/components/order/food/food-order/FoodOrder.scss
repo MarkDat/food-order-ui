@@ -1,10 +1,20 @@
+@import '../../../../themes/generated/variables.base.scss';
+
 .food-order {
     &__header {
-        .order-button {
-            &__action {
+        .action-btn {
+            &__order {
                 border-radius: 10% !important;
                 width: 50px;
             }
+    
+            &__clear {
+                border-radius: 10% !important;
+                width: 50px;
+                background-color: transparent !important;
+                border: 1px solid $base-accent;
+            }
         }
+        
     }
 }
