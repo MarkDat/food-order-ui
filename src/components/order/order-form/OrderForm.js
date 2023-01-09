@@ -51,7 +51,6 @@ function OrderForm() {
         <OrderFoodContext.Provider value={{orderFoods, setOrderFoods}}>
             <div className="row">
                 <div className="col-md-3">
-                    <h3 className="text-center">Nhóm</h3>
                     <FoodGroup menuGroups={menuGroups} onClickedFoodGroup={onClickedFoodGroup}></FoodGroup>
                 </div>
                 <div className="col-md-6"><FoodMenu foods={foods}></FoodMenu></div>

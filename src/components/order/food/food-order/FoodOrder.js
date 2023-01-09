@@ -30,7 +30,10 @@ function FoodOrder() {
                 <h3 className="mt-1">Giỏ hàng</h3>
                 <div className="d-flex">
                     <div className="action-btn">
-                        <Button className="action-btn__clear" icon="fa-regular fa-trash-undo i-color--accent" onClick={onClickOrderClear}/>
+                        {
+                            (orderFoods && orderFoods.length > 0) &&
+                            <Button className="action-btn__clear" icon="fa-regular fa-trash-undo i-color--accent" onClick={onClickOrderClear}/>
+                        }
                     </div>
                     <div className="action-btn ms-1">
                         <Button className="action-btn__order br-color--accent" icon="fa-solid fa-cart-plus i-color--white" />
@@ -42,9 +45,9 @@ function FoodOrder() {
 
     const FoodOrderFooter = () => {
         return <>
-            <div className="food-order-footer d-flex justify-content-between">
+            <div className="food-order__footer d-flex justify-content-between">
                 <h4>Tổng:</h4>
-                <span>{total}</span>
+                <span className="sum">{(+total).toMoneyString()}đ</span>
             </div>
         </>
     }
@@ -56,7 +59,7 @@ function FoodOrder() {
                 className="food-order-list"
                 dataSource={orderFoods}
                 noDataText={'Hãy chọn món đi!!!'}
-                height={300}
+                height={250}
                 focusStateEnabled={false}
                 itemRender={(food) => <FoodOrderInfo food={food} />}>
             </List>

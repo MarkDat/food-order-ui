@@ -16,5 +16,18 @@
             }
         }
         
+
+        .title {
+            width: 100px;
+            border-radius: 5%;
+            text-align: center;
+        }
+    }
+
+    &__footer {
+        .sum {
+            font-size: 15px;
+            font-weight: 600;
+        }
     }
 }
