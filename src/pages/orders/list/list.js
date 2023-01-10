@@ -9,9 +9,12 @@ import DataGrid, {
 import { ActionCellTemplate } from "@components/shared";
 import "./list.scss";
 import { useNavigate } from "react-router-dom";
+import { Tooltip } from "devextreme-react";
+import { useRef } from "react";
 
 export default function OrderList() {
 	const navigate = useNavigate();
+	const tooltipRef = useRef();
 
 	const onEditClicked = (e, data) => {
 		console.log(data);
@@ -22,45 +25,58 @@ export default function OrderList() {
 		console.log(data);
 	};
 
+	const onCellHoverChanged = (e) => {
+		if(e.eventType === "mouseover") {
+			console.log(e);
+			tooltipRef.current.instance.show(e.cellElement);
+		}
+
+		if(e.eventType === "mouseout") {
+			tooltipRef.current.instance.hide();
+		}
+	}
+
 	return (
 		<>
 			<DataGrid
 				className={"dx-card wide-card"}
-				dataSource={[]}
+				dataSource={dataSource}
 				showBorders={false}
 				focusedRowEnabled={false}
 				defaultFocusedRowIndex={0}
 				columnAutoWidth={true}
 				columnHidingEnabled={false}
 				hoverStateEnabled={true}
+				wordWrapEnabled={true}
+				onCellHoverChanged={onCellHoverChanged}
 			>
 				<Paging defaultPageSize={10} />
 				<Pager showPageSizeSelector={true} showInfo={true} />
 				<FilterRow visible={true} />
 
 				<Column
-					dataField={"Task_ID"}
+					dataField={"id"}
 					width={100}
-					caption={"Mã nhà hàng"}
+					caption={"Mã đơn"}
 					alignment="center"
 				/>
 				<Column
-					dataField={"Task_Subject"}
+					dataField={"restaurantName"}
 					width={300}
 					caption={"Tên nhà hàng"}
 				/>
-				<Column dataField={"Task_Status"} caption={"Trạng thái đơn"} />
+				<Column dataField={"status"} caption={"Trạng thái đơn"} />
 				<Column
-					dataField={"Task_Status"}
+					dataField={"owner"}
 					caption={"Người tạo đơn"}
 					alignment={'left'}
 				/>
 				<Column
-					dataField={"Task_Start_Date"}
+					dataField={"createDate"}
 					caption={"Ngày tạo đơn"}
 					dataType={"date"}
 				/>
-				<Column dataField={"Task_Priority"} caption={"Số người đã đặt"} width={100}>
+				<Column dataField={"personOrderNumber"} caption={"Số người đã đặt"} width={100}>
 					<Lookup
 						dataSource={priorities}
 						valueExpr={"value"}
@@ -81,28 +97,24 @@ export default function OrderList() {
 					)}
 				/>
 			</DataGrid>
+
+			<Tooltip ref={tooltipRef} position={"top"}>
+				<div>kaka</div>
+			</Tooltip>
 		</>
 	);
 }
 
-const dataSource = {
-	store: {
-		type: "odata",
-		key: "Task_ID",
-		url: "https://js.devexpress.com/Demos/DevAV/odata/Tasks",
-	},
-	expand: "ResponsibleEmployee",
-	select: [
-		"Task_ID",
-		"Task_Subject",
-		"Task_Start_Date",
-		"Task_Due_Date",
-		"Task_Status",
-		"Task_Priority",
-		"Task_Completion",
-		"ResponsibleEmployee/Employee_Full_Name",
-	],
-};
+const dataSource = [
+	{
+		id: 1,
+		restaurantName: 'Co tam',
+		status: 'Đang chờ',
+		owner: 'Quynh Nguyen',
+		createDate: '2023-01-10',
+		personOrderNumber: 8
+	}
+];
 
 const priorities = [
 	{ name: "High", value: 4 },
