@@ -8,12 +8,14 @@ import { useNavigation } from './contexts/navigation';
 
 export default function Content() {
 	const location = useLocation();
-	const { setNavigationData } = useNavigation();
+	const { navigationPaths, setNavigationData } = useNavigation();
 
 	// Set navigation
 	useEffect(() => {
+
 		console.log("Location changed: ", location);
-		setNavigationData({ currentPath: location.pathname });
+		const path = navigationPaths.find(_ => location.pathname.startsWith(_));
+		setNavigationData({ currentPath: path });
 	}, [location, setNavigationData]);
 
 	return (

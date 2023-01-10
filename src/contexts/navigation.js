@@ -1,15 +1,19 @@
+import { getOnlyPathsNavigate } from '@utils/common-functions';
 import React, { useState, createContext, useContext, useEffect } from 'react';
+import {navigation} from '../app-navigation'
 
 
 const NavigationContext = createContext({});
 const useNavigation = () => useContext(NavigationContext);
 
+const navigationPaths = getOnlyPathsNavigate(navigation);
+
 function NavigationProvider(props) {
   const [navigationData, setNavigationData] = useState({ currentPath: '' });
-
+  
   return (
     <NavigationContext.Provider
-      value={{ navigationData, setNavigationData }}
+      value={{ navigationPaths, navigationData, setNavigationData }}
       {...props}
     />
   );
