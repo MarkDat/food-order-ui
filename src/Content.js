@@ -16,7 +16,7 @@ export default function Content() {
 		console.log("Location changed: ", location);
 		const path = navigationPaths.find(_ => location.pathname.startsWith(_));
 		setNavigationData({ currentPath: path });
-	}, [location, setNavigationData]);
+	}, [location, navigationPaths, setNavigationData]);
 
 	return (
 		<SideNavBarLayout title={appInfo.title}>
